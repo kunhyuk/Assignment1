@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+
+
+    <bean id="Student" class="org.example.Student" init-method="init" destroy-method="destroy">
+        <property name="id" value="1000" />
+        <property name="name" value = "Lee" />
+        <property name="ph" >
+            <list value-type="org.example.Phone">
+                <ref bean ="Phone"/>
+                <ref bean="Phone2"/>
+            </list>
+                </property>
+        <property name="add" ref = "Address" />
+    </bean>
+
+    <bean id="Address" class="org.example.Address" >
+        <property name="city" value="Atl" />
+        <property name="county" value="Gwinnett" />
+        <property name="state" value="GA" />
+        <property name="zipcode" value="30043" />
+    </bean>
+
+    <bean id="Phone" class="org.example.Phone" >
+        <property name="mob" value="4048209338" />
+    </bean>
+
+    <bean id="Phone2" class="org.example.Phone" >
+        <property name="mob" value="99999999" />
+    </bean>
+
+</beans>
